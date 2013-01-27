@@ -7,6 +7,7 @@
     <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="lib/d3.v3/d3.v3.min.js"></script>
     <script type="text/javascript" src="lib/sprintf/sprintf-0.7-beta1.js"></script>
+    <!--
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
         tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
@@ -14,48 +15,49 @@
     </script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
+    -->
     <script type="text/javascript" src="main.js"></script>
     <link rel="stylesheet" href="main.css"/>
 </head>
 <body>
-    <div class="row-fluid">
-        <div class="span10 offset1">
-            <h2>Interactive demo for figures in the paper</h2>
-            <div class="tabbable">
-                <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a href="#tab_pca" data-toggle="tab">Figure 1</a>
-                    </li>
-                    <li>
-                        <a href="#tab_rotated_basis" data-toggle="tab">Figure 2</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="tab-content">
+<div class="row-fluid">
+    <div class="span10 offset1">
+        <h2>Interactive demo for figures in the paper</h2>
 
-                <div class="tab-pane active" id="tab_pca">
-                    <div class="row-fluid">
-                        <div class="span8">
-                            <div id="plot_pca"><svg/></div>
-                        </div>
-                        <div class="span4 well">
-                            <dl>
-                                <dt>green component</dt>
-                                <dd>rank order of larger eigenvalue ($i$)</dd>
-                                <dt>red component</dt>
-                                <dd>rank order of smaller eigenvalue ($j$)</dd>
-                                <dt>lighter color</dt>
-                                <dd>higher rank</dd>
-                            </dl>
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab_pca" data-toggle="tab">Figure 1</a>
+                </li>
+                <li>
+                    <a href="#tab_rotated_basis" data-toggle="tab">Figure 2</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content">
+
+            <div class="tab-pane active" id="tab_pca">
+                <div class="row-fluid">
+                    <div class="span8">
+                        <div id="plot_pca">
+                            <svg/>
                         </div>
                     </div>
+                    <div class="span4 well">
+                        <p>Intensity of the green color channel denotes the magnitude of the larger eigenvalue (brighter
+                            is larger), intensity of the red color channel denotes the magnitude of the smaller
+                            eigenvalue.</p>
+                    </div>
                 </div>
-                <div class="tab-pane" id="tab_rotated_basis">
-                    <div id="plot_rb"><svg/></div>
-                </div>
-
             </div>
+            <div class="tab-pane" id="tab_rotated_basis">
+                <div id="plot_rb">
+                    <svg/>
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
 </body>
 </html>

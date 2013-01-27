@@ -100,6 +100,7 @@ function PlotJSON(divId, fileName, viewFolder) {
             .attr("height", MiniplotSize);
 
         miniplots.append("p")
+            .style("text-align","center")
             .append("small")
             .text(function(d,i){
                 return(PCAMiniplotText[i]);
@@ -114,7 +115,7 @@ function CreatePCAColorMap(ndim) {
         var greenValue = Math.floor((ndim - i) * 255 / ndim + 255 / (2 * ndim));
         for (var j = i + 1; j <= ndim; j++) {
             var redValue = Math.floor((ndim - j) * 255 / ndim + 255 / (2 * ndim));
-            colorMap[idx] = "#" + ((redValue << 16) | (greenValue << 8)).toString(16);
+            colorMap[idx] = sprintf("#%06x",(redValue << 16) | (greenValue << 8));
             idx++;
         }
     }
@@ -127,7 +128,7 @@ function CreatePCAMiniplotText(ndim)
     var idx = 0;
     for (var i = 1; i < ndim; i++) {
         for (var j = i + 1; j <= ndim; j++) {
-            textArray[idx] = sprintf("$i=%d,j=%d$",i,j);
+            textArray[idx] = sprintf("i=%d, j=%d",i,j);
             idx++;
         }
     }
