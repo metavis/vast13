@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive demo of meta-visualization</title>
+    <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/d3.v3/d3.v3.min.js"></script>
+    <script type="text/javascript" src="lib/sprintf/sprintf-0.7-beta1.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <h2>Interactive demo for figures in the paper</h2>
+            <div class="tabbable">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#tab_pca" data-toggle="tab">Figure 1</a>
+                    </li>
+                    <li>
+                        <a href="#tab_rotated_basis" data-toggle="tab">Figure 2</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_pca">
+                    <div id="plot_pca"><svg/></div>
+                </div>
+                <div class="tab-pane" id="tab_rotated_basis">
+                    <div id="plot_rb"><svg/></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
