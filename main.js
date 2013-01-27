@@ -86,6 +86,9 @@ function ShowMainPlot(divId, jsonFileName,viewFolder,faceFolder) {
 
 
                 var larger_miniplot = d3.select("#larger_miniplot_pca");
+                larger_miniplot.select("p")
+                    .style("text-align","center")
+                    .text(MiniplotTextPCA[i]);
                 var larger_miniplot_svg=larger_miniplot.select("svg");
                 larger_miniplot_svg.remove();
                 larger_miniplot_svg=larger_miniplot.append("svg");
