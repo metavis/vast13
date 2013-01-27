@@ -24,7 +24,7 @@ var FaceSize = 15;
 var LargerMiniplotSize = 350;
 //var LargerMiniplotIdPrefixPCA = "pca_larger_";
 
-var MarginLargerMiniplot = FaceSize+2;
+var MarginLargerMiniplot = FaceSize + 2;
 var ScaleLargerMiniplot = d3.scale.linear()
     .domain([0, 1])
     .range([MarginLargerMiniplot, LargerMiniplotSize - MarginLargerMiniplot]);
@@ -34,18 +34,20 @@ var MiniplotTextPCA = CreateMiniplotTextPCA(40);
 
 
 $(function () {
-    ShowMainPlot("#plot_pca", "data/nerv_pca.json","data/views_pca","data/faces");
+    ShowMainPlot("#plot_pca", "data/nerv_pca.json", "data/views_pca", "data/faces");
     CreateImageDivs("#miniplot_group_pca", "data/views_pca", 780, MiniplotIdPrefixPCA, MiniplotSize, MiniplotTextPCA);
     //CreateImageDivs("#face_group_pca", "data/faces", 400, FacesIdPrefixPCA, FaceSize, null);
 });
 
-function ShowMainPlot(divId, jsonFileName,viewFolder,faceFolder) {
+function ShowMainPlot(divId, jsonFileName, viewFolder, faceFolder) {
     var plot = d3.select(divId);
     var svg = plot.select("svg");
     svg.remove();
     svg = plot.append("svg");
     svg.attr("width", SVGSize)
         .attr("height", SVGSize)
+    //svg.attr("viewBox", "0 0 " + SVGSize + " " + SVGSize)
+        .attr("preserveAspectRatio","xMinYMin")
         .append("rect")
         .attr("x", 0)
         .attr("y", 0)
@@ -69,7 +71,7 @@ function ShowMainPlot(divId, jsonFileName,viewFolder,faceFolder) {
                 return(ScaleMainPlot(d[0]));
             })
             .attr("cy", function (d) {
-                return(ScaleMainPlot(d[1]));
+                return(ScaleMainPlot(1-d[1]));
             })
             .attr("r", CircleRadius)
             .attr("fill", function (d, i) {
@@ -87,11 +89,11 @@ function ShowMainPlot(divId, jsonFileName,viewFolder,faceFolder) {
 
                 var larger_miniplot = d3.select("#larger_miniplot_pca");
                 larger_miniplot.select("p")
-                    .style("text-align","center")
+                    .style("text-align", "center")
                     .text(MiniplotTextPCA[i]);
-                var larger_miniplot_svg=larger_miniplot.select("svg");
+                var larger_miniplot_svg = larger_miniplot.select("svg");
                 larger_miniplot_svg.remove();
-                larger_miniplot_svg=larger_miniplot.append("svg");
+                larger_miniplot_svg = larger_miniplot.append("svg");
                 larger_miniplot_svg.attr("width", LargerMiniplotSize)
                     .attr("height", LargerMiniplotSize)
                     .append("rect")
@@ -103,23 +105,23 @@ function ShowMainPlot(divId, jsonFileName,viewFolder,faceFolder) {
                     .attr("stroke-width", 2)
                     .attr("stroke", "black");
 
-                var viewJsonFileName=sprintf("%s/%03d.json",viewFolder,i);
+                var viewJsonFileName = sprintf("%s/%03d.json", viewFolder, i);
 
                 d3.json(viewJsonFileName, function (viewJson) {
                     larger_miniplot_svg.selectAll("image")
                         .data(viewJson)
                         .enter()
                         .append("image")
-                        .attr("x",function(view_d,view_i){
+                        .attr("x", function (view_d, view_i) {
                             return(ScaleLargerMiniplot(view_d[0]));
                         })
-                        .attr("y",function(view_d,view_i){
-                            return(ScaleLargerMiniplot(view_d[1]));
+                        .attr("y", function (view_d, view_i) {
+                            return(ScaleLargerMiniplot(1-view_d[1]));
                         })
-                        .attr("width",FaceSize)
-                        .attr("height",FaceSize)
-                        .attr("xlink:href",function(view_d,view_i){
-                            return(sprintf("%s/%03d.png",faceFolder,view_i+1));
+                        .attr("width", FaceSize)
+                        .attr("height", FaceSize)
+                        .attr("xlink:href", function (view_d, view_i) {
+                            return(sprintf("%s/%03d.png", faceFolder, view_i + 1));
                         });
 
                 });
@@ -148,7 +150,7 @@ function CreateImageDivs(containerId, folder, count, divIdPrefix, size, addition
         if (additionalTexts != null) {
             img_div.append("p")
                 .style("text-align", "center")
-                .style("background-color","white")
+                .style("background-color", "white")
                 .append("small")
                 .text(additionalTexts[i]);
         }
