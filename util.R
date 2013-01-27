@@ -44,3 +44,14 @@ Normalize <- function(m)
   m.normalized[,2] <- (m[,2]-min.y)/(max.y-min.y)
   return(m.normalized)
 }
+
+CreateViewsJSON <- function(views,saveToFolder)
+{
+  for (i in seq_along(views))
+  {
+    view.list <- ConvertMatrixToList(Normalize(views[[i]]))
+    fileName <- sprintf("%s/%03d.json",saveToFolder,i)
+    writeToJson(view.list,fileName)
+  }
+}
+

@@ -35,12 +35,12 @@
             </ul>
         </div>
         <div class="tab-content">
-
             <div class="tab-pane active" id="tab_pca">
                 <div class="row-fluid">
                     <div class="span8">
                         <div id="plot_pca">
-                            <svg/>
+                            <svg></svg>
+                            <div id="miniplot_group_pca"></div>
                         </div>
                     </div>
                     <div class="span4 well">
@@ -50,17 +50,23 @@
                             <dd>index of the larger eigenvalue</dd>
                             <dt>j</dt>
                             <dd>index of the smaller eigenvalue</dd>
-                            <dt>intensity of the green color channel</dt>
+                            <dt>Intensity of the green color channel</dt>
                             <dd>magnitude of the larger eigenvalue (brighter is larger, the same below)</dd>
-                            <dt>intensity of the red color channel</dt>
+                            <dt>Intensity of the red color channel</dt>
                             <dd>magnitude of the smaller eigenvalue</dd>
                         </dl>
+                    </div>
+                    <div class="span4">
+                        <div id="larger_miniplot_pca">
+                            <svg></svg>
+                        </div>
+                        <div id="face_group_pca"></div>
                     </div>
                 </div>
             </div>
             <div class="tab-pane" id="tab_rotated_basis">
                 <div id="plot_rb">
-                    <svg/>
+                    <svg></svg>
                 </div>
             </div>
 
