@@ -19,10 +19,8 @@ var MiniplotSize = 100;
 var MiniplotIdPrefixPCA = "pca_mini_";
 
 var FaceSize = 15;
-//var FacesIdPrefixPCA = "pca_face_";
 
 var LargerMiniplotSize = 350;
-//var LargerMiniplotIdPrefixPCA = "pca_larger_";
 
 var MarginLargerMiniplot = FaceSize + 2;
 var ScaleLargerMiniplot = d3.scale.linear()
@@ -36,7 +34,6 @@ var MiniplotTextPCA = CreateMiniplotTextPCA(40);
 $(function () {
     ShowMainPlot("#plot_pca", "data/nerv_pca.json", "data/views_pca", "data/faces");
     CreateImageDivs("#miniplot_group_pca", "data/views_pca", 780, MiniplotIdPrefixPCA, MiniplotSize, MiniplotTextPCA);
-    //CreateImageDivs("#face_group_pca", "data/faces", 400, FacesIdPrefixPCA, FaceSize, null);
 });
 
 function ShowMainPlot(divId, jsonFileName, viewFolder, faceFolder) {
@@ -46,8 +43,6 @@ function ShowMainPlot(divId, jsonFileName, viewFolder, faceFolder) {
     svg = plot.append("svg");
     svg.attr("width", SVGSize)
         .attr("height", SVGSize)
-    //svg.attr("viewBox", "0 0 " + SVGSize + " " + SVGSize)
-        .attr("preserveAspectRatio","xMinYMin")
         .append("rect")
         .attr("x", 0)
         .attr("y", 0)
