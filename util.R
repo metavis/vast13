@@ -7,7 +7,7 @@ CreateMiniPlots <- function(views, saveToFolder)
     require("png")
     png(fileName)
     par(mar=c(0,0,0,0))
-    plot(view,xlab="",ylab="",xaxt='n',yaxt='n',cex=0.5,pch=19)
+    plot(view,xlab="",ylab="",xaxt='n',yaxt='n',cex=1,pch=19)
     dev.off()
   }
 }
